@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../navigator/my_navigator.dart';
+
+class QueriesPage extends StatelessWidget {
+  const QueriesPage({Key? key, this.queries, this.value}) : super(key: key);
+
+  final String? queries, value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: Text('Segments:\n$queries : $value')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Provider.of<MyNavigator>(context, listen: false).goBack(context);
+        },
+        child: const Icon(Icons.arrow_back_ios),
+      ),
+    );
+  }
+}

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_router/providers/theme_provider.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+
+import '../../navigator/my_navigator.dart';
+import '../../providers/theme_provider.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print('Onboarding');
     final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
@@ -29,8 +32,9 @@ class OnBoardingPage extends StatelessWidget {
             height: 10.0,
           ),
           FloatingActionButton(
+            heroTag: null,
             onPressed: () {
-              themeProvider.setTextTheme(GoogleFonts.pacificoTextTheme());
+              Provider.of<MyNavigator>(context, listen: false).goToRoute(context, '/home');
             },
             child: const Icon(Icons.edit),
           ),

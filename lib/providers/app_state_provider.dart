@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../navigator/my_navigator.dart';
 import '../root.dart';
 import 'theme_provider.dart';
 
@@ -10,7 +11,15 @@ class AppStateProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => ThemeProvider())],
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider(
+          lazy: false,
+          create: (BuildContext context) => MyNavigator(),
+        )
+      ],
       child: const MyApp(),
     );
   }

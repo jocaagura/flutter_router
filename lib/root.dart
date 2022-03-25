@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'navigator/my_navigator.dart';
 import 'providers/theme_provider.dart';
-import 'ui/pages/onboarding_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -11,11 +11,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final myNavigator = Provider.of<MyNavigator>(context);
+    print('reconstruyendo');
 
-    return MaterialApp(
+
+
+    return MaterialApp.router(
       title: 'Navigator 2.0 with provider demo',
       theme: themeProvider.theme,
-      home: const OnBoardingPage(),
+      routerDelegate: myNavigator.myRouter.routerDelegate,
+      routeInformationParser: myNavigator.myRouter.routeInformationParser,
     );
   }
 }
