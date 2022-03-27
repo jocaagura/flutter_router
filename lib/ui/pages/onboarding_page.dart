@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../navigator/my_navigator.dart';
@@ -10,11 +9,12 @@ class OnBoardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Onboarding');
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final myNavigator = Provider.of<MyNavigator>(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Navigator 2.0 onBoarding'),
+        title: Text('Navigator 2.0 onBoarding and ${myNavigator.count}'),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: Column(
@@ -34,7 +34,8 @@ class OnBoardingPage extends StatelessWidget {
           FloatingActionButton(
             heroTag: null,
             onPressed: () {
-              Provider.of<MyNavigator>(context, listen: false).goToRoute(context, '/home');
+              myNavigator
+                  .pushNamed('/segments', <String, String>{'Hola': '123'});
             },
             child: const Icon(Icons.edit),
           ),

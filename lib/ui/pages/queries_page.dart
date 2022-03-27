@@ -10,11 +10,12 @@ class QueriesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final myNavigator = Provider.of<MyNavigator>(context);
     return Scaffold(
-      body: Center(child: Text('Segments:\n$queries : $value')),
+      body: Center(child: Text('Queries segments:\n$queries : $value')),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Provider.of<MyNavigator>(context, listen: false).goBack(context);
+          myNavigator.pop();
         },
         child: const Icon(Icons.arrow_back_ios),
       ),

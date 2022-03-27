@@ -16,8 +16,9 @@ class AppStateProvider extends StatelessWidget {
           create: (_) => ThemeProvider(),
         ),
         ChangeNotifierProvider(
-          lazy: false,
-          create: (BuildContext context) => MyNavigator(),
+          create: (BuildContext context){
+            return MyNavigator();
+          },
         )
       ],
       child: const MyApp(),
